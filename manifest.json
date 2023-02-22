@@ -1,7 +1,7 @@
 {
-    "name": "Test-React",
-    "short_name": "TR",
- 
+    "name": "ukad-test-react",
+    "short_name": "UTR",
+    "start_url": "/index.html",
     "display": "browser",
     "icons": [
       {
