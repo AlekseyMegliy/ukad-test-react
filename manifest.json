@@ -1,13 +1,15 @@
 {
-    "name": "Test-React",
-    "short_name": "UTR",
-    "start_url": "/index.html",
-    "display": "browser",
-    "icons": [
-      {
-        "src": "@/assets/UKAD_logo.svg",
-        "sizes": "110x26",
-        "type": "image/svg"
-      }
-    ]
-  }
+  "name": "Test-React",
+  "short_name": "UTR",
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff",
+  "icons": [
+    {
+      "src": "@/assets/UKAD_logo.svg",
+      "sizes": "110x26",
+      "type": "image/svg"
+    }
+  ]
+}
