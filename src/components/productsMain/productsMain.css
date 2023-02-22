@@ -1,0 +1,20 @@
+.products-main {
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+  margin: 30px 0;
+}
+.products-main .head {
+  text-transform: capitalize;
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 54px;
+  color: black;
+  padding-left: 10px;
+}
+.products-main .product-page .single-product {
+  margin-bottom: 40px;
+  padding: 0 20px;
+}

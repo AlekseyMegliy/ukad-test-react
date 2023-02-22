@@ -1,0 +1,13 @@
+{
+    "name": "Test-React",
+    "short_name": "TR",
+    "start_url": "/index.html",
+    "display": "browser",
+    "icons": [
+      {
+        "src": "@/assets/UKAD_logo.svg",
+        "sizes": "110x26",
+        "type": "image/svg"
+      }
+    ]
+  }
