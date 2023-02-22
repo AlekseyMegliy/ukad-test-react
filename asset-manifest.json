@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/static/css/main.ddb6aa55.css",
+    "main.js": "/static/js/main.ceb1a64f.js",
+    "static/media/UKAD_logo.svg": "/static/media/UKAD_logo.047bc8da860930f0f6c5e1a81aed2318.svg",
+    "index.html": "/index.html",
+    "static/media/Mask.svg": "/static/media/Mask.410aa466d547332b744592c313527d8f.svg",
+    "main.ddb6aa55.css.map": "/static/css/main.ddb6aa55.css.map",
+    "main.ceb1a64f.js.map": "/static/js/main.ceb1a64f.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ddb6aa55.css",
+    "static/js/main.ceb1a64f.js"
+  ]
+}
