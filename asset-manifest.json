@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/test-react/static/css/main.3be93d62.css",
-    "main.js": "/test-react/static/js/main.dc5c3f93.js",
-    "static/media/UKAD_logo.svg": "/test-react/static/media/UKAD_logo.047bc8da860930f0f6c5e1a81aed2318.svg",
-    "index.html": "/test-react/index.html",
-    "static/media/Mask.svg": "/test-react/static/media/Mask.410aa466d547332b744592c313527d8f.svg",
-    "main.3be93d62.css.map": "/test-react/static/css/main.3be93d62.css.map",
-    "main.dc5c3f93.js.map": "/test-react/static/js/main.dc5c3f93.js.map"
+    "main.css": "/ukad-test-react/static/css/main.3be93d62.css",
+    "main.js": "/ukad-test-react/static/js/main.8465cbc2.js",
+    "static/media/UKAD_logo.svg": "/ukad-test-react/static/media/UKAD_logo.047bc8da860930f0f6c5e1a81aed2318.svg",
+    "index.html": "/ukad-test-react/index.html",
+    "static/media/Mask.svg": "/ukad-test-react/static/media/Mask.410aa466d547332b744592c313527d8f.svg",
+    "main.3be93d62.css.map": "/ukad-test-react/static/css/main.3be93d62.css.map",
+    "main.8465cbc2.js.map": "/ukad-test-react/static/js/main.8465cbc2.js.map"
   },
   "entrypoints": [
     "static/css/main.3be93d62.css",
-    "static/js/main.dc5c3f93.js"
+    "static/js/main.8465cbc2.js"
   ]
 }
