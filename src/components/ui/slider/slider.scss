@@ -1,0 +1,69 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap");
+
+@mixin side($side, $rotate: 0deg) {
+  transition: all 0.1s ease-in 0s;
+  display: flex;
+  position: absolute;
+  justify-content: center;
+  vertical-align: middle;
+  background: white;
+  box-shadow: black 0px 0px 25px -15px;
+  border-radius: 50%;
+  width: 68px;
+  height: 68px;
+  top: 45%;
+  margin-top: 0px;
+  z-index: 5;
+  opacity: 1;
+  content: " ";
+  cursor: pointer;
+  transform: rotate($rotate);
+
+  #{$side}: 4.5%;
+
+  @media all and (max-width: 1300px) {
+    #{$side}: 7%;
+  }
+  @media all and (max-width: 991px) {
+    #{$side}: 1%;
+  }
+
+  &:hover {
+    box-shadow: black 0px 0px 35px -13px;
+  }
+  &:active {
+    box-shadow: black 0px 0px 0px 0px;
+  }
+
+  .slider__arrow {
+    width: 12px;
+  }
+}
+
+.slider {
+  .products-row {
+    display: flex;
+    position: relative;
+    flex-wrap: nowrap;
+    overflow: hidden;
+    margin: 0 80px;
+    @media all and (max-width: 991px) {
+      margin: 0;
+    }
+
+    .products-row__card {
+      transition: all 0.5s ease-in;
+      position: relative;
+      padding: 0 20px;
+      z-index: 0;
+    }
+  }
+
+  .slider__left-button {
+    @include side($side: left, $rotate: 180deg);
+  }
+
+  .slider__right-button {
+    @include side($side: right);
+  }
+}

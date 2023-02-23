@@ -1,0 +1,22 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap");
+.home {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 100vh;
+  flex-grow: 1;
+
+  .home__title {
+    text-transform: capitalize;
+    color: black;
+    line-height: 54px;
+    font-weight: 700;
+    font-size: 36px;
+    margin: 0 100px;
+
+    @media all and (max-width: 991px) {
+      margin: 0 20px;
+    }
+  }
+}

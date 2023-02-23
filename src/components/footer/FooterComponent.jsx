@@ -1,9 +1,9 @@
-import "./footer.css";
+import "./footer.scss";
 
 function Footer(props) {
   return (
     <div className="footer ">
-      <div className=" copyright">2021 © copyright</div>
+      <div className="footer__copyright">2021 © copyright</div>
     </div>
   );
 }

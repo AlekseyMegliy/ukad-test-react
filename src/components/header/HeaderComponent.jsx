@@ -1,23 +1,38 @@
 import { Link } from "react-router-dom";
-import "./header.css";
+import "./header.scss";
 import logo from "../../assets/UKAD_logo.svg";
+import { useLocation } from "react-router-dom";
 
-function Header(props) {
+function Header() {
+  const location = useLocation();
   return (
     <div className="header container-fluid">
-      <div className="header-nav">
-        <img className="logo" alt="logo" src={logo} />
-        <div className="nav">
-          <Link className={props.page === 1 ? "current" : undefined} to="/">
-            Home
-          </Link>
-          <Link
-            className={props.page === 2 ? "current" : undefined}
-            to="/products"
-          >
-            Products
-          </Link>
-        </div>
+      <Link to="/">
+        <img className="header__logo" alt="logo" src={logo} />
+      </Link>
+      <div className="nav">
+        <Link
+          className="nav__link"
+          style={
+            location.pathname === "/"
+              ? { textDecoration: "underline" }
+              : undefined
+          }
+          to="/"
+        >
+          Home
+        </Link>
+        <Link
+          className="nav__link"
+          style={
+            location.pathname === "/products"
+              ? { textDecoration: "underline" }
+              : undefined
+          }
+          to="/products"
+        >
+          Products
+        </Link>
       </div>
     </div>
   );

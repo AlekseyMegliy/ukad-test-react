@@ -1,17 +1,17 @@
-import "./productCard.css";
+import "./productCard.scss";
 
 function ProductCard(props) {
   return (
     <div
       style={props.max <= props.dogy.id ? { display: "none" } : undefined}
-      className="product container-fluid"
+      className="productCard container-fluid"
     >
-      <div className="img-cut">
+      <div className="productCard__img-cuter">
         <img alt={`>>>>>>>>> ${props.dogy.name}`} src={props.dogy.image.url} />
       </div>
 
-      <p className="type">{props.dogy.life_span}</p>
-      <p className="name">{props.dogy.name}</p>
+      <p className="productCard__type">{props.dogy.life_span}</p>
+      <p className="productCard__name">{props.dogy.name}</p>
     </div>
   );
 }
