@@ -5,7 +5,7 @@ import { ProductCardProps } from "../../modules";
 export default function ProductCard(props: ProductCardProps) {
   return (
     <div
-      style={props.limit <= props.dogy.id ? { display: "none" } : undefined}
+      style={props.limit < props.dogy.id ? { display: "none" } : undefined}
       className="productCard container-fluid"
     >
       <div className="productCard__img-cuter">

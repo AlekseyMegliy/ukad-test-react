@@ -8,7 +8,7 @@ export default function SliderComponent(props: SliderComponentProps) {
   const [shift, setShift] = useState<number>(0);
   const [rightEdge, setEdge] = useState<boolean>(false);
   const [width, setWidth] = useState<number>(window.innerWidth);
-  const max: number = 8;
+  const max: number = 10;
 
   useEffect(() => {
     window.addEventListener("resize", updateWidth);
@@ -17,6 +17,8 @@ export default function SliderComponent(props: SliderComponentProps) {
   function right() {
     if (width > 991 && Math.floor(max / 3) > shift / -100 + 1) {
       setShift(shift - 100);
+      console.log("shift / -100 + 1 " + shift / -100 + 1);
+      console.log("Math.floor(max / 3) " + Math.floor(max / 3));
     } else if (
       width > 991 &&
       Math.floor(max / 3) === shift / -100 + 1 &&
@@ -24,6 +26,9 @@ export default function SliderComponent(props: SliderComponentProps) {
     ) {
       setShift(shift - 66.6666);
       setEdge(true);
+      console.log("width: " + width);
+      console.log("shift / -100 + 1: " + shift / -100 + 1);
+      console.log("Math.floor(max / 3): " + Math.floor(max / 3));
     } else if (
       width > 991 &&
       Math.floor(max / 3) === shift / -100 + 1 &&
@@ -71,7 +76,7 @@ export default function SliderComponent(props: SliderComponentProps) {
       </span>
 
       <div className="row products-row">
-        {props.breed.map((dogy: any) => (
+        {props.breed.map((dogy: any, index) => (
           <div
             key={dogy.id}
             className="col-12 col-lg-4 products-row__card"
