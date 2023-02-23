@@ -1,9 +1,10 @@
+import React from "react";
 import { Link } from "react-router-dom";
 import "./header.scss";
 import logo from "../../assets/UKAD_logo.svg";
 import { useLocation } from "react-router-dom";
 
-function Header() {
+export default function Header() {
   const location = useLocation();
   return (
     <div className="header container-fluid">
@@ -37,4 +38,4 @@ function Header() {
     </div>
   );
 }
-export default Header;
+

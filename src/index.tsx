@@ -22,17 +22,17 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
-        meta: { page: 1 },
       },
       {
         path: "/products",
         element: <Products />,
-        meta: { page: 2 },
       },
     ],
   },
 ]);
-const root = ReactDOM.createRoot(document.getElementById("root"));
+const root = ReactDOM.createRoot(
+  document.getElementById("root") as Element | DocumentFragment
+);
 
 root.render(
   <React.StrictMode>

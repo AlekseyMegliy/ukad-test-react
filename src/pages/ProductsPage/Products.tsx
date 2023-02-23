@@ -1,9 +1,10 @@
 import "./products.scss";
 import React, { useState, useEffect } from "react";
 import Product from "../../components/productCard/ProductCardComponent";
+import { BreedType } from "../../modules";
 
 export default function Products() {
-  const [jsonInfo, setInfo] = useState([]);
+  const [jsonInfo, setInfo] = useState<BreedType[]>([]);
   const max = 20;
   useEffect(() => {
     fetch("https://api.thedogapi.com/v1/breeds?limit=10&page=0")
