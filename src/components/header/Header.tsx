@@ -2,6 +2,7 @@ import React from "react";
 import { Link, NavLink } from "react-router-dom";
 import "./header.scss";
 import logo from "../../assets/UKAD_logo.svg";
+import { highlightedLinkStyleIfActive } from "../../shared/utils";
 
 export default function Header() {
   return (
@@ -12,18 +13,14 @@ export default function Header() {
       <div className="header__nav">
         <NavLink
           className="header__nav-link"
-          style={({ isActive }) =>
-            isActive ? { textDecoration: "underline" } : undefined
-          }
+          style={highlightedLinkStyleIfActive}
           to="/"
         >
           Home
         </NavLink>
         <NavLink
           className="header__nav-link"
-          style={({ isActive }) =>
-            isActive ? { textDecoration: "underline" } : undefined
-          }
+          style={highlightedLinkStyleIfActive}
           to="/products"
         >
           Products
