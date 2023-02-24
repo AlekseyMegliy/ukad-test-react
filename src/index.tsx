@@ -1,8 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
-import Header from "./components/header/HeaderComponent";
-import Footer from "./components/footer/FooterComponent";
+import Header from "./components/header/Header";
+import Footer from "./components/footer/Footer";
 import Home from "./pages/HomePage/Home";
 import Products from "./pages/ProductsPage/Products";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";

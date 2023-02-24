@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import arrow from "../../../assets/Mask.svg";
-import Product from "../../productCard/ProductCardComponent";
+import Product from "../productCard/ProductCard";
 import "./slider.scss";
-import { SliderComponentProps } from "../../../modules";
+import { SliderComponentProps } from "../../../types";
 
 export default function SliderComponent(props: SliderComponentProps) {
   const [shift, setShift] = useState<number>(0);

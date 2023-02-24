@@ -1,11 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap");
-.productCard {
+.product-сard {
   margin: 0;
   padding: 0;
   border: 3px solid #f2f2f2;
 
-  .productCard__img-cuter {
+  .product-сard__img-cuter {
     aspect-ratio: 4 / 3;
     object-fit: contain;
     overflow: hidden;
@@ -18,7 +18,7 @@
     }
   }
 
-  .productCard__type {
+  .product-сard__type {
     margin: 10px 0 8px 28px;
     font-weight: 600;
     font-size: 13px;
@@ -28,7 +28,7 @@
     line-height: 20px;
   }
 
-  .productCard__name {
+  .product-сard__name {
     margin: 0 0 28px 28px;
     font-weight: 700;
     font-size: 19px;
