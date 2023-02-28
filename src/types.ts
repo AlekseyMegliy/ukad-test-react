@@ -18,6 +18,7 @@ export type BreedType = {
     height: number;
     url: string;
   };
+  [key: string]: any;
 };
 
 export interface ProductCardProps {

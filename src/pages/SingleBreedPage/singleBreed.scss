@@ -1,0 +1,66 @@
+.single-breed {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+  min-height: 100vh;
+  margin: 30px 0;
+  padding: 0 25px;
+  flex-grow: 1;
+  .single-breed__title {
+    text-transform: capitalize;
+    color: black;
+    padding-left: 10px;
+    line-height: 54px;
+    font-weight: 700;
+    font-size: 36px;
+  }
+  .single-breed__link {
+    text-transform: capitalize;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.3s ease-in-out;
+    color: #035867;
+    margin-bottom: 20px;
+    line-height: 54px;
+    font-weight: 600;
+    font-size: 36px;
+
+    &:hover {
+      color: #022b32;
+      margin-left: 5%;
+      @media all and (max-width: 767px) {
+        margin-left: -10px;
+      }
+    }
+    &:active {
+      color: black 0px 0px 35px -10px;
+    }
+  }
+  .details {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+
+    .details__breed-data {
+      font-weight: 500;
+      font-size: 19px;
+      color: #232323;
+      line-height: 28px;
+      strong {
+        text-transform: capitalize;
+      }
+    }
+    .details__breed-description {
+      font-weight: 500;
+      font-size: 15px;
+      color: #035867;
+      line-height: 28px;
+      strong {
+        text-transform: capitalize;
+        color: black;
+      }
+    }
+  }
+}

@@ -5,6 +5,7 @@ import Header from "./components/header/Header";
 import Footer from "./components/footer/Footer";
 import Home from "./pages/HomePage/Home";
 import Products from "./pages/ProductsPage/Products";
+import SingleBreed from "./pages/SingleBreedPage/SingleBreed";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -26,6 +27,10 @@ const router = createBrowserRouter([
       {
         path: "/products",
         element: <Products />,
+      },
+      {
+        path: "/products/:id",
+        element: <SingleBreed />,
       },
     ],
   },

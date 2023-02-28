@@ -4,7 +4,7 @@ import Product from "../../components/ui/productCard/ProductCard";
 import { BreedType } from "../../types";
 
 export default function Products() {
-  const [jsonInfo, setInfo] = useState<BreedType[]>([]);
+  const [breed, setInfo] = useState<BreedType[]>([]);
   const [errorMessage, setError] = useState<string>("");
   const max = 21;
   useEffect(() => {
@@ -22,7 +22,7 @@ export default function Products() {
       {errorMessage &&
         "Oops, something went wrong. Error message: " + errorMessage}
       <div className="row products-page">
-        {jsonInfo.map((dogy, index) => (
+        {breed.map((dogy, index) => (
           <div
             key={dogy.id}
             className="col-12 col-md-6 col-lg-3 products-page_card"
