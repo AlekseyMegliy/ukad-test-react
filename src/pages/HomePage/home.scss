@@ -7,7 +7,7 @@
   min-height: 100vh;
   flex-grow: 1;
 
-  .home__title {
+  &__title {
     text-transform: capitalize;
     color: black;
     line-height: 54px;

@@ -4,13 +4,13 @@ import Product from "../../components/ui/productCard/ProductCard";
 import { BreedType } from "../../types";
 
 export default function Products() {
-  const [breed, setInfo] = useState<BreedType[]>([]);
+  const [breed, setBreed] = useState<BreedType[]>([]);
   const [errorMessage, setError] = useState<string>("");
   const max = 21;
   useEffect(() => {
     fetch("https://api.thedogapi.com/v1/breeds?limit=25&page=0")
       .then((res) => res.json())
-      .then((data) => setInfo(data))
+      .then((data) => setBreed(data))
       .catch((error) => {
         console.error("Error fetching breed information:", error);
         setError(String(error.errorMessage));

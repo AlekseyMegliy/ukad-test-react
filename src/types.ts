@@ -1,9 +1,14 @@
+export type Length = {
+  imperial: string;
+  metric: string;
+};
+export type LinkProps = {
+  isActive: boolean;
+};
+
 export type BreedType = {
-  weight: { imperial: string; metric: string };
-  height: {
-    imperial: string;
-    metric: string;
-  };
+  weight: Length;
+  height: Length;
   id: number;
   name: string;
   bred_for: string;
@@ -11,14 +16,14 @@ export type BreedType = {
   life_span: string;
   temperament: string;
   origin: string;
-  reference_image_id: string;
-  image: {
+  reference_image_id?: string;
+  description: string;
+  image?: {
     id: string;
     width: number;
     height: number;
     url: string;
   };
-  [key: string]: any;
 };
 
 export interface ProductCardProps {

@@ -1,25 +1,23 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap");
+
 .product-сard {
   margin: 0;
   padding: 0;
   padding-bottom: 15px;
   border: 3px solid #f2f2f2;
 
-  .product-сard__img-cuter {
+  &__image {
     aspect-ratio: 4 / 3;
-    object-fit: contain;
-    overflow: hidden;
-
-    img {
-      width: 120%;
-      position: relative;
-      left: -10%;
-      object-fit: contain;
-    }
+    width: 100%;
+    position: relative;
+    object-fit: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
-  .product-сard__type {
+  &__type {
     margin: 10px 0 8px 28px;
     font-weight: 600;
     font-size: 13px;
@@ -29,20 +27,18 @@
     line-height: 20px;
   }
 
-  .product-сard__name {
+  &__name {
     margin: 0 0 8px 28px;
-    font-weight: 700;
-    font-size: 19px;
     color: #232323;
     line-height: 28px;
   }
-  .product-сard__link {
+  &__link {
     margin: 20px;
     padding: 3px 8px;
     background-color: #024a57;
     font-weight: 600;
     font-size: 19px;
-    color: #ffffff;
+    color: #fff;
     line-height: 28px;
     text-decoration: none;
 

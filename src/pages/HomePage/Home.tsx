@@ -5,12 +5,12 @@ import SliderComponent from "../../components/ui/slider/Slider";
 import { BreedType } from "../../types";
 
 function Home() {
-  const [breed, setInfo] = useState<BreedType[]>([]);
+  const [breed, setBreed] = useState<BreedType[]>([]);
   const [errorMessage, setError] = useState<string>("");
   useEffect(() => {
     fetch("https://api.thedogapi.com/v1/breeds?limit=10&page=0")
       .then((res) => res.json())
-      .then((data) => setInfo(data))
+      .then((data) => setBreed(data))
       .catch((error) => {
         console.error("Error fetching breed information:", error);
         setError(String(error.errorMessage));

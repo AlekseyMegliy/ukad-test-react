@@ -1,26 +1,80 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import "./singleBreed.scss";
 import { useLocation } from "react-router-dom";
 import { BreedType } from "../../types";
 import { Link } from "react-router-dom";
+import { Length } from "../../types";
 import loadingImg from "../../assets/loading.gif";
+
+function isLength(value: unknown): value is Length {
+  return (
+    (value as Length).metric !== undefined &&
+    (value as Length).imperial !== undefined
+  );
+}
+
+function SpecsItem({ value, name }: { value: unknown; name: string }) {
+  if (typeof value === "string") {
+    return (
+      <p className="details__breed-data">
+        <strong className="details__breed-data_strong">
+          {name.split("_").join(" ")}:
+        </strong>{" "}
+        {value}
+      </p>
+    );
+  }
+  if (isLength(value)) {
+    return (
+      <p className="details__breed-data">
+        <strong className="details__breed-data_strong">
+          {name.split("_").join(" ")}:
+        </strong>{" "}
+        {value.metric} Centimeters
+      </p>
+    );
+  }
+  return <></>;
+}
 
 export default function SingleBreed() {
   let { state } = useLocation();
-  const [breed, setInfo] = useState<BreedType[]>([]);
+  const [breed, setBreed] = useState<BreedType>();
   const [errorMessage, setError] = useState<string>("");
-  let dog = breed.find((item) => item.id === state.id) as BreedType;
-  let dogDetails = breed.length > 0 ? Object.keys(dog).slice(3, -2) : [];
+  const [image, setImage] = useState<{ url: string }>();
 
   useEffect(() => {
-    fetch("https://api.thedogapi.com/v1/breeds?limit=20&page=0")
+    fetch(`https://api.thedogapi.com/v1/breeds/${state.id}`)
       .then((res) => res.json())
-      .then((data) => setInfo(data))
+      .then((data) => setBreed(data))
       .catch((error) => {
         console.error("Error fetching breed information:", error);
         setError(String(error.errorMessage));
       });
-  }, []);
+  }, [state]);
+
+  useEffect(() => {
+    if (!breed) {
+      return;
+    }
+    fetch(`https://api.thedogapi.com/v1/images/${breed.reference_image_id}`)
+      .then((res) => res.json())
+      .then((data) => setImage(data))
+      .catch((error) => {
+        console.error("Error fetching breed information:", error);
+        setError(String(error.errorMessage));
+      });
+  }, [breed]);
+
+  const breedsSpecs = useMemo(() => {
+    return (
+      breed &&
+      Object.entries(breed).filter(
+        ([name]) =>
+          !["reference_image_id", "description", "id", "name"].includes(name)
+      )
+    );
+  }, [breed]);
 
   return (
     <div className="single-breed container-fluid ">
@@ -33,36 +87,35 @@ export default function SingleBreed() {
         &lt;-Go to product list
       </Link>
       <h1 className="single-breed__title offset-md-1 ">
-        {breed.length > 0 ? dog.name : "Loading data..."}
+        {breed ? breed.name : "Loading data..."}
       </h1>
-      <div className="breed-data row">
-        <div className="single-breed__image offset-md-1 col-md-5 col-lg-4">
-          <img
-            className=" col-12"
-            src={breed.length > 0 ? dog.image.url : loadingImg}
-            alt={breed.length > 0 ? dog.name : "Loading data..."}
-          />
-        </div>
 
-        <div className="details offset-md-1 col-md-5">
-          {dogDetails.map((key: string, index) => (
-            <>
-              {dog[key] && dog[key].split("").length < 100 ? (
-                <p key={key} className="details__breed-data">
-                  <strong>{key.split("_").join(" ")}:</strong> {dog[key]}
-                </p>
-              ) : undefined}
-            </>
-          ))}
-          {breed.length > 0 ? (
-            dog.description ? (
+      {breedsSpecs && breed && (
+        <div className="breed-data row">
+          <div className="single-breed__image offset-md-1 col-md-5 col-lg-4">
+            <img
+              className=" col-12"
+              src={image ? image.url : loadingImg}
+              alt={breed.name}
+            />
+          </div>
+
+          <div className="details offset-md-1 col-md-5">
+            {breedsSpecs.map(([key, value]) => (
+              <SpecsItem key={key} name={key} value={value} />
+            ))}
+
+            {breed && breed.description && (
               <p className="details__breed-data details__breed-description">
-                <strong>Description:</strong> {dog.description}
+                <strong className="details__breed-description_strong">
+                  Description:
+                </strong>{" "}
+                {breed.description}
               </p>
-            ) : undefined
-          ) : undefined}
+            )}
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 }

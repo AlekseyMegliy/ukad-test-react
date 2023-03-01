@@ -9,9 +9,15 @@ export default function ProductCard(props: ProductCardProps) {
       style={props.limit < props.dogy.id ? { display: "none" } : undefined}
       className="product-сard"
     >
-      <div className="product-сard__img-cuter">
-        <img alt={`>>>>>>>>> ${props.dogy.name}`} src={props.dogy.image.url} />
-      </div>
+      {props.dogy.image ? (
+        <img
+          className="product-сard__image"
+          alt={props.dogy.name}
+          src={props.dogy.image.url}
+        />
+      ) : (
+        <div className="product-сard__image">No image</div>
+      )}
 
       <p className="product-сard__type">{props.dogy.life_span}</p>
       <p className="product-сard__name">{props.dogy.name}</p>

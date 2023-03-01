@@ -7,7 +7,7 @@
   margin: 30px 0;
   padding: 0 25px;
   flex-grow: 1;
-  .single-breed__title {
+  &__title {
     text-transform: capitalize;
     color: black;
     padding-left: 10px;
@@ -15,7 +15,7 @@
     font-weight: 700;
     font-size: 36px;
   }
-  .single-breed__link {
+  &__link {
     text-transform: capitalize;
     text-decoration: none;
     display: inline-block;
@@ -43,22 +43,21 @@
     justify-content: space-between;
     overflow: hidden;
 
-    .details__breed-data {
+    &__breed-data {
       font-weight: 500;
       font-size: 19px;
       color: #232323;
       line-height: 28px;
-      strong {
+      &_strong {
         text-transform: capitalize;
       }
     }
-    .details__breed-description {
+    &__breed-description {
       font-weight: 500;
       font-size: 15px;
       color: #035867;
       line-height: 28px;
-      strong {
-        text-transform: capitalize;
+      &_strong {
         color: black;
       }
     }
