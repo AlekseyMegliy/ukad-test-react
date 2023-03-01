@@ -40,7 +40,7 @@ function SpecsItem({ value, name }: { value: unknown; name: string }) {
 export default function SingleBreed() {
   let { state } = useLocation();
   const [breed, setBreed] = useState<BreedType>();
-  const [errorMessage, setError] = useState<string>("");
+  const [errorMessage, setErrorMessage] = useState("");
   const [image, setImage] = useState<{ url: string }>();
 
   useEffect(() => {
@@ -49,7 +49,7 @@ export default function SingleBreed() {
       .then((data) => setBreed(data))
       .catch((error) => {
         console.error("Error fetching breed information:", error);
-        setError(String(error.errorMessage));
+        setErrorMessage(String(error.errorMessage));
       });
   }, [state]);
 
@@ -62,7 +62,7 @@ export default function SingleBreed() {
       .then((data) => setImage(data))
       .catch((error) => {
         console.error("Error fetching breed information:", error);
-        setError(String(error.errorMessage));
+        setErrorMessage(String(error.errorMessage));
       });
   }, [breed]);
 

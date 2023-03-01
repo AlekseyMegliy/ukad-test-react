@@ -6,16 +6,16 @@ import { BreedType } from "../../types";
 
 function Home() {
   const [breed, setBreed] = useState<BreedType[]>([]);
-  const [errorMessage, setError] = useState<string>("");
+  const [errorMessage, setErrorMessage] = useState("");
   useEffect(() => {
     fetch("https://api.thedogapi.com/v1/breeds?limit=10&page=0")
       .then((res) => res.json())
       .then((data) => setBreed(data))
       .catch((error) => {
         console.error("Error fetching breed information:", error);
-        setError(String(error.errorMessage));
+        setErrorMessage(String(error.errorMessage));
       });
-  }, [errorMessage]);
+  }, [breed]);
 
   return (
     <div className="home container-fluid">
