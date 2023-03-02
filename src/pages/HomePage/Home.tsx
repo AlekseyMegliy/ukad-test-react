@@ -20,8 +20,8 @@ function Home() {
   return (
     <div className="home container-fluid">
       <h1 className="home__title">home page</h1>
-      {errorMessage &&
-        "Oops, something went wrong. Error message: " + errorMessage}
+      {/* {errorMessage &&
+        "Oops, something went wrong. Error message: " + errorMessage} */}
       <SliderComponent breed={breed} />
     </div>
   );
