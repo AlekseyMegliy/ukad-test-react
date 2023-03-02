@@ -9,24 +9,23 @@ export default function ProductCard({ dogy, limit }: ProductCardProps) {
       style={limit < dogy.id ? { display: "none" } : undefined}
       className="product-сard"
     >
-      {dogy.image ? (
-        <img
-          className="product-сard__image"
-          alt={dogy.name}
-          src={dogy.image.url}
-        />
-      ) : (
-        <div className="product-сard__image">No image</div>
-      )}
-
-      <p className="product-сard__type">{dogy.life_span}</p>
-      <p className="product-сard__name">{dogy.name}</p>
       <Link
         to={{ pathname: `/products/${dogy.id}` }}
         state={{ id: dogy.id }}
         className="product-сard__link"
       >
-        Details
+        {dogy.image ? (
+          <img
+            className="product-сard__image"
+            alt={dogy.name}
+            src={dogy.image.url}
+          />
+        ) : (
+          <div className="product-сard__image">No image</div>
+        )}
+
+        <p className="product-сard__type">{dogy.life_span}</p>
+        <p className="product-сard__name">{dogy.name}</p>
       </Link>
     </div>
   );

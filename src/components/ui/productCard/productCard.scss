@@ -4,7 +4,7 @@
 .product-сard {
   margin: 0;
   padding: 0;
-  padding-bottom: 15px;
+  padding-bottom: 10px;
   border: 3px solid #f2f2f2;
 
   &__image {
@@ -33,19 +33,6 @@
     line-height: 28px;
   }
   &__link {
-    margin: 20px;
-    padding: 3px 8px;
-    background-color: #024a57;
-    font-weight: 600;
-    color: #fff;
-    line-height: 28px;
     text-decoration: none;
-
-    &:hover {
-      background-color: #022b32;
-    }
-    &:active {
-      box-shadow: black 0px 0px 35px -10px;
-    }
   }
 }

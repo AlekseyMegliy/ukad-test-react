@@ -14,7 +14,7 @@ function isLength(value: unknown): value is Length {
 }
 
 function SpecsItem({ value, name }: { value: unknown; name: string }) {
-  if (typeof value === "string") {
+  if (typeof value === "string" && value) {
     return (
       <p className="details__breed-data">
         <strong className="details__breed-data_strong">
