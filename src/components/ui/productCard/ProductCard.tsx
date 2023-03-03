@@ -11,7 +11,6 @@ export default function ProductCard({ dogy, limit }: ProductCardProps) {
     >
       <Link
         to={{ pathname: `/products/${dogy.id}` }}
-        state={{ id: dogy.id }}
         className="product-сard__link"
       >
         {dogy.image ? (

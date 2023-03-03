@@ -34,3 +34,23 @@ export interface ProductCardProps {
 export interface SliderComponentProps {
   breed: BreedType[];
 }
+
+export interface SingleBreedSpecsProps {
+  breed: BreedType;
+  breedsSpecs:
+    | [
+        string,
+        (
+          | string
+          | number
+          | Length
+          | {
+              id: string;
+              width: number;
+              height: number;
+              url: string;
+            }
+        )
+      ][];
+  image: { url: string };
+}

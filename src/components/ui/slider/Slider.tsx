@@ -70,7 +70,7 @@ export default function SliderComponent(props: SliderComponentProps) {
         <img alt="slider__arrow" className="slider__arrow" src={arrow} />
       </span>
 
-      <div className="row products-row">
+      <div className="slider__products-row row">
         {props.breed.map((dogy: any, index) => (
           <div
             key={dogy.id}

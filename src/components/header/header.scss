@@ -6,13 +6,11 @@
 
   &__logo {
     width: 110px;
-    padding: 0;
-    color: #fff;
     margin: auto 0 auto 20px;
   }
   &__nav {
-    margin: auto 0 auto 30px;
-    color: #fff;
+    display: flex;
+    flex-wrap: wrap;
 
     &-link {
       margin: auto 30px;
@@ -22,9 +20,6 @@
       text-decoration: none;
       text-transform: uppercase;
       color: #fff;
-      &:hover {
-        color: #fff;
-      }
     }
   }
 }

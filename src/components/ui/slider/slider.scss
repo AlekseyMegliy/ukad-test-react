@@ -41,7 +41,7 @@
 }
 
 .slider {
-  .products-row {
+  &__products-row {
     display: flex;
     position: relative;
     flex-wrap: nowrap;
