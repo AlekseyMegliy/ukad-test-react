@@ -74,7 +74,7 @@ export default function SliderComponent(props: SliderComponentProps) {
         {props.breed.map((dogy: any, index) => (
           <div
             key={dogy.id}
-            className="col-12 col-lg-4 products-row__card"
+            className="col-12 col-lg-4 slider__products-row__card"
             style={
               index > max - 1 ? { display: "none" } : { left: shift + "%" }
             }
