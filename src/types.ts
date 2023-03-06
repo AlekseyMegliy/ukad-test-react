@@ -5,7 +5,13 @@ export type Length = {
 export type LinkProps = {
   isActive: boolean;
 };
-
+export type ImageType = {
+  id: string;
+  url: string;
+  breeds?: BreedType;
+  width: number;
+  height: number;
+};
 export type BreedType = {
   weight: Length;
   height: Length;
@@ -18,16 +24,10 @@ export type BreedType = {
   origin: string;
   reference_image_id?: string;
   description: string;
-  image?: {
-    id: string;
-    width: number;
-    height: number;
-    url: string;
-  };
+  image?: ImageType;
 };
 
 export interface ProductCardProps {
-  limit: number;
   dogy: BreedType;
 }
 
@@ -35,22 +35,10 @@ export interface SliderComponentProps {
   breed: BreedType[];
 }
 
-export interface SingleBreedSpecsProps {
+type BreedsSpecs = [string, string | number | Length | ImageType][];
+
+export interface BreedDataProps {
   breed: BreedType;
-  breedsSpecs:
-    | [
-        string,
-        (
-          | string
-          | number
-          | Length
-          | {
-              id: string;
-              width: number;
-              height: number;
-              url: string;
-            }
-        )
-      ][];
-  image: { url: string };
+  breedsSpecs: BreedsSpecs;
+  image?: ImageType;
 }

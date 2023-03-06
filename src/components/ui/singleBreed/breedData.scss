@@ -1,3 +1,4 @@
+@import "../../../shared/variables.scss";
 .breed-data {
   overflow: hidden;
   padding: 5% 0;
@@ -21,10 +22,10 @@
 
     &__description {
       font-size: 15px;
-      color: #035867;
+      color: $light-turquoise-color;
       text-transform: none;
 
-      & > strong {
+      &_strong {
         color: black;
       }
     }

@@ -79,7 +79,7 @@ export default function SliderComponent(props: SliderComponentProps) {
               index > max - 1 ? { display: "none" } : { left: shift + "%" }
             }
           >
-            <Product dogy={dogy} limit={max} />
+            <Product dogy={dogy} />
           </div>
         ))}
       </div>

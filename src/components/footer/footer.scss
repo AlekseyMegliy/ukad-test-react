@@ -1,5 +1,6 @@
+@import "../../shared/variables.scss";
 .footer {
-  background-color: #022b32;
+  background-color: $dark-turquoise-color;
 
   &__copyright {
     padding: 27px 35px;

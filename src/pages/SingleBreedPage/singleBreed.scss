@@ -1,3 +1,4 @@
+@import "../../shared/variables.scss";
 .single-breed {
   display: flex;
   flex-direction: column;
@@ -10,13 +11,13 @@
     text-decoration: none;
     display: inline-block;
     transition: all 0.3s ease-in-out;
-    color: #035867;
+    color: $light-turquoise-color;
     margin-top: 20px;
     font-weight: 600;
     font-size: 30px;
 
     &:hover {
-      color: #022b32;
+      color: $dark-turquoise-color;
       transform: translate(-5%);
     }
     &:active {

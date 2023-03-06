@@ -1,9 +1,10 @@
 import React from "react";
+import "./loader.scss";
 import { BallTriangle } from "react-loader-spinner";
 
 export default function Loader() {
   return (
-    <div style={{ margin: "auto" }}>
+    <div className="loader">
       <BallTriangle
         height={100}
         width={100}

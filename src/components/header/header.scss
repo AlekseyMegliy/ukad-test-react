@@ -1,5 +1,6 @@
+@import "../../shared/variables.scss";
 .header {
-  background-color: #022b32;
+  background-color: $dark-turquoise-color;
   padding: 25px 20px;
   display: flex;
   vertical-align: middle;

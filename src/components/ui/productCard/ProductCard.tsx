@@ -3,12 +3,9 @@ import { Link } from "react-router-dom";
 import "./productCard.scss";
 import { ProductCardProps } from "../../../types";
 
-export default function ProductCard({ dogy, limit }: ProductCardProps) {
+export default function ProductCard({ dogy }: ProductCardProps) {
   return (
-    <div
-      style={limit < dogy.id ? { display: "none" } : undefined}
-      className="product-сard"
-    >
+    <div className="product-сard">
       <Link
         to={{ pathname: `/products/${dogy.id}` }}
         className="product-сard__link"

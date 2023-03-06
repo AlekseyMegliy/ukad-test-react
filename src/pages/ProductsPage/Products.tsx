@@ -28,7 +28,7 @@ export default function Products() {
                 index >= numberOfCards - 1 ? { display: "none" } : undefined
               }
             >
-              <Product dogy={dogy} limit={numberOfCards} />
+              <Product dogy={dogy} />
             </div>
           ))}
         </div>

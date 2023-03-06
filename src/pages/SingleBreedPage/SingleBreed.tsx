@@ -2,6 +2,7 @@ import { useState, useEffect, useMemo } from "react";
 import "./singleBreed.scss";
 import { useLocation } from "react-router-dom";
 import { BreedType } from "../../types";
+import { ImageType } from "../../types";
 import { Link } from "react-router-dom";
 import BreedData from "../../components/ui/singleBreed/BreedData";
 import Loader from "../../components/ui/loader/Loader";
@@ -10,7 +11,7 @@ export default function SingleBreed() {
   const { pathname } = useLocation();
   const id = pathname.split("/")[2];
   const [breed, setBreed] = useState<BreedType>();
-  const [image, setImage] = useState<{ url: string }>();
+  const [image, setImage] = useState<ImageType>();
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -52,7 +53,7 @@ export default function SingleBreed() {
       >
         &lt;-Go to product list
       </Link>
-      {breed && breedsSpecs && image ? (
+      {breed && breedsSpecs ? (
         <BreedData breed={breed} breedsSpecs={breedsSpecs} image={image} />
       ) : (
         <Loader />
