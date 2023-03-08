@@ -41,11 +41,11 @@ export default function BreedData({
     <div className="breed-data row">
       <h1 className="breed-data__title offset-md-1 ">{breed.name}</h1>
       <div className="offset-md-1 col-md-5 col-lg-4">
-        {image ? (
-          <img className="col-12" src={image.url} alt={breed.name} />
-        ) : (
-          <img className="col-12" src={loading} alt={breed.name} />
-        )}
+        <img
+          className="col-12"
+          src={image ? image.url : loading}
+          alt={breed.name}
+        />
       </div>
       <div className="breed-data__details offset-md-1 col-md-5">
         {breedsSpecs.map(([key, value]) => (

@@ -6,7 +6,7 @@ import Loader from "../../components/ui/loader/Loader";
 import { BreedType } from "../../types";
 
 function Home() {
-  const [breed, setBreed] = useState<BreedType[]>([]);
+  const [breeds, setBreed] = useState<BreedType[]>([]);
   useEffect(() => {
     fetch("https://api.thedogapi.com/v1/breeds?limit=10&page=0")
       .then((res) => res.json())
@@ -14,12 +14,12 @@ function Home() {
       .catch((error) => {
         console.error("Error fetching breed information:", error);
       });
-  }, [breed]);
+  }, [breeds]);
 
   return (
     <div className="home">
       <h1 className="home__title">home page</h1>
-      {breed.length ? <SliderComponent breed={breed} /> : <Loader />}
+      {breeds.length ? <SliderComponent items={breeds} /> : <Loader />}
     </div>
   );
 }

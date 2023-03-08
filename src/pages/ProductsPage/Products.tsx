@@ -5,8 +5,7 @@ import Loader from "../../components/ui/loader/Loader";
 import { BreedType } from "../../types";
 
 export default function Products() {
-  const [breed, setBreed] = useState<BreedType[]>([]);
-  const numberOfCards = 21;
+  const [breeds, setBreed] = useState<BreedType[]>([]);
   useEffect(() => {
     fetch("https://api.thedogapi.com/v1/breeds?limit=25&page=0")
       .then((res) => res.json())
@@ -14,21 +13,18 @@ export default function Products() {
       .catch((error) => {
         console.error("Error fetching breed information:", error);
       });
-  }, [breed]);
+  }, [breeds]);
   return (
     <div className="products container-fluid">
       <h1 className="products__title">product page</h1>
-      {breed.length ? (
+      {breeds.length ? (
         <div className="row products-page">
-          {breed.map((dogy, index) => (
+          {breeds.map((dogy, index) => (
             <div
               key={dogy.id}
-              className="col-12 col-md-6 col-lg-3 products-page_card"
-              style={
-                index >= numberOfCards - 1 ? { display: "none" } : undefined
-              }
+              className="col-12 col-md-6 col-lg-3 products-page__card"
             >
-              <Product dogy={dogy} />
+              <Product {...dogy} />
             </div>
           ))}
         </div>

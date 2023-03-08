@@ -32,7 +32,7 @@ export interface ProductCardProps {
 }
 
 export interface SliderComponentProps {
-  breed: BreedType[];
+  items: BreedType[];
 }
 
 type BreedsSpecs = [string, string | number | Length | ImageType][];
