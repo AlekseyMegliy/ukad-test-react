@@ -1,20 +1,15 @@
 import "./products.scss";
-import React, { useState, useEffect } from "react";
+import arrow from "../../assets/Mask.svg";
+import { useEffect } from "react";
 import Product from "../../components/ui/productCard/ProductCard";
 import Loader from "../../components/ui/loader/Loader";
-import { BreedType } from "../../types";
 import { useFetchBreedsQuery } from "../../components/ui/redux-paginstion-slice/fetch-slice";
-import { usePagination } from "../../shared/utils";
+import { usePagination, useAppDispatch } from "../../shared/utils";
+import { changePage } from "../../components/ui/redux-paginstion-slice/fetch-slice";
 
 export default function Products() {
-  // const [breed, setBreed] = useState<BreedType[]>([]);
-
-  const numberOfCards = 21;
-
-  const { data = [], isFetching } = useFetchBreedsQuery(20);
-
-  let breeds = data;
-
+  const dispatch = useAppDispatch();
+  const numberOfCards = 10;
   const {
     firstContentIndex,
     lastContentIndex,
@@ -24,21 +19,22 @@ export default function Products() {
     setPage,
     totalPages,
   } = usePagination({
-    numberOfCards: 10,
-    listLength: breeds.length,
+    numberOfCards: numberOfCards,
+    listLength: 170,
   });
-  // useEffect(() => {
-  //   fetch("https://api.thedogapi.com/v1/breeds?limit=25&page=0")
-  //     .then((res) => res.json())
-  //     .then((data) => setBreed(data))
-  //     .catch((error) => {
-  //       console.error("Error fetching breed information:", error);
-  //     });
-  // }, [breed]);
+  const { data = [] } = useFetchBreedsQuery(page * numberOfCards);
+  let breeds = data;
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+    dispatch(changePage(page));
+  }, [dispatch, page]);
   return (
     <div className="products container-fluid">
       <h1 className="products__title">product page</h1>
-      {breeds.length ? (
+      {breeds.length >= page * 10 ? (
         <div className="row products-page">
           {breeds
             .slice(firstContentIndex, lastContentIndex)
@@ -46,9 +42,6 @@ export default function Products() {
               <div
                 key={dogy.id}
                 className="col-12 col-md-6 col-lg-3 products-page_card"
-                style={
-                  index >= numberOfCards - 1 ? { display: "none" } : undefined
-                }
               >
                 <Product dogy={dogy} />
               </div>
@@ -57,6 +50,42 @@ export default function Products() {
       ) : (
         <Loader />
       )}
+      <div className="products-pagination">
+        <button onClick={prevPage} className="products-pagination__page-button">
+          <img
+            alt="slider__arrow"
+            className="products-pagination__page-button-arrow"
+            src={arrow}
+          />
+        </button>
+        {Array.from({ length: totalPages }, (_, i) => i).map((el) => (
+          <button
+            onClick={() => setPage(el + 1)}
+            key={el}
+            className={`products-pagination__page-button ${
+              page === el + 1 ? "products-pagination__page-button_active" : ""
+            }`}
+            style={
+              (el + 1 > page + 3 && el + 1 < 15) ||
+              (el + 1 < page - 3 && el + 1 > 3)
+                ? { display: "none" }
+                : undefined
+            }
+          >
+            {(el + 1 === page + 3 && el + 1 < 15) ||
+            (el + 1 === page - 3 && el + 1 > 3)
+              ? "..."
+              : el + 1}
+          </button>
+        ))}
+        <button onClick={nextPage} className="products-pagination__page-button">
+          <img
+            alt="slider__arrow"
+            className="products-pagination__page-button-arrow"
+            src={arrow}
+          />
+        </button>
+      </div>
     </div>
   );
 }

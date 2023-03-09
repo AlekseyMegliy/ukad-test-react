@@ -1,4 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import { createSlice } from "@reduxjs/toolkit";
 import { BreedType } from "../../../types";
 
 const API_KEY =
@@ -24,4 +25,17 @@ export const apiSlice = createApi({
   },
 });
 
+export const pageSlice = createSlice({
+  name: "pageChanger",
+  initialState: { page: 1 },
+  reducers: {
+    changePage: (state, action) => {
+      state.page = action.payload;
+    },
+  },
+});
+
 export const { useFetchBreedsQuery } = apiSlice;
+
+export const { changePage } = pageSlice.actions;
+export default pageSlice.reducer;
