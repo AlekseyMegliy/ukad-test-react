@@ -1,0 +1,27 @@
+@import "../../shared/variables.scss";
+.single-breed {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  min-height: 90vh;
+  padding: 0 25px;
+  text-transform: capitalize;
+
+  &__link {
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.3s ease-in-out;
+    color: $light-turquoise-color;
+    margin-top: 20px;
+    font-weight: 600;
+    font-size: 30px;
+
+    &:hover {
+      color: $dark-turquoise-color;
+      transform: translate(-5%);
+    }
+    &:active {
+      color: black 0px 0px 35px -10px;
+    }
+  }
+}

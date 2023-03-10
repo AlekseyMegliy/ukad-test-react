@@ -1,23 +1,22 @@
 .products {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  padding: 5% 0;
   overflow: hidden;
   min-height: 100vh;
   margin: 30px 0;
   padding: 0 25px;
   flex-grow: 1;
 
-  .products__title {
+  &__title {
     text-transform: capitalize;
     color: black;
     padding-left: 10px;
     line-height: 54px;
-    font-weight: 700;
     font-size: 36px;
   }
 
-  .products-page_card {
+  &-page__card {
     margin-bottom: 40px;
     padding: 0 20px;
   }
