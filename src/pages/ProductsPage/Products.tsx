@@ -5,11 +5,11 @@ import Loader from "../../components/ui/loader/Loader";
 import { BreedType } from "../../types";
 
 export default function Products() {
-  const [breeds, setBreed] = useState<BreedType[]>([]);
+  const [breeds, setBreeds] = useState<BreedType[]>([]);
   useEffect(() => {
     fetch("https://api.thedogapi.com/v1/breeds?limit=25&page=0")
       .then((res) => res.json())
-      .then((data) => setBreed(data))
+      .then((data) => setBreeds(data))
       .catch((error) => {
         console.error("Error fetching breed information:", error);
       });
@@ -24,7 +24,7 @@ export default function Products() {
               key={dogy.id}
               className="col-12 col-md-6 col-lg-3 products-page__card"
             >
-              <Product {...dogy} />
+              {dogy && <Product {...dogy} />}
             </div>
           ))}
         </div>

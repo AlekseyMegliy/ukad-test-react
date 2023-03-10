@@ -6,11 +6,11 @@ import Loader from "../../components/ui/loader/Loader";
 import { BreedType } from "../../types";
 
 function Home() {
-  const [breeds, setBreed] = useState<BreedType[]>([]);
+  const [breeds, setBreeds] = useState<BreedType[]>([]);
   useEffect(() => {
     fetch("https://api.thedogapi.com/v1/breeds?limit=10&page=0")
       .then((res) => res.json())
-      .then((data) => setBreed(data))
+      .then((data) => setBreeds(data))
       .catch((error) => {
         console.error("Error fetching breed information:", error);
       });
