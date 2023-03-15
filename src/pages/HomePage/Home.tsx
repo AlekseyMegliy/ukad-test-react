@@ -20,7 +20,7 @@ function Home() {
       });
 
     return () => {
-      dispatch(changePage(1));
+      dispatch(changePage(0));
     };
   }, [breeds, dispatch]);
 
