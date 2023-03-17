@@ -1,20 +1,20 @@
 import "./products.scss";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import arrow from "../../assets/Mask.svg";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import ReactPaginate from "react-paginate";
 import Product from "../../components/ui/productCard/ProductCard";
 import Loader from "../../components/ui/loader/Loader";
-import { useFetchBreedsQuery } from "../../components/ui/redux-paginstion-slice/fetch-slice";
+import { useFetchBreedsQuery } from "../../store/redux-paginstion-slice/fetch-slice";
 import { useAppDispatch } from "../../shared/utils";
-import { changePage } from "../../components/ui/redux-paginstion-slice/fetch-slice";
+import { changePage } from "../../store/redux-paginstion-slice/fetch-slice";
 
 export default function Products() {
-  const { search } = useLocation();
-  const id = Number(search.split("=")[1]);
+  const [search] = useSearchParams();
+  const currentPage = Number(search.get("page"));
   const dispatch = useAppDispatch();
-  const [page, setPage] = useState(id);
-  const { data = [] } = useFetchBreedsQuery(page);
+  const [page, setPage] = useState(currentPage);
+  const { data = [] } = useFetchBreedsQuery(page - 1);
   let breeds = data;
   const pageCount = 17;
   const history = useNavigate();
@@ -31,7 +31,7 @@ export default function Products() {
   const handlePageClick = (event: { selected: any }) => {
     const newOffset = event.selected;
 
-    setPage(newOffset);
+    setPage(newOffset + 1);
   };
   return (
     <div className="products container-fluid">
@@ -69,7 +69,7 @@ export default function Products() {
         breakLinkClassName="products-pagination__page-button__link"
         activeClassName="products-pagination__page-button_active"
         breakLabel="..."
-        forcePage={page}
+        forcePage={page - 1}
       />
     </div>
   );

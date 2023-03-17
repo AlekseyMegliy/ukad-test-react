@@ -5,7 +5,7 @@ import SliderComponent from "../../components/ui/slider/Slider";
 import Loader from "../../components/ui/loader/Loader";
 import { BreedType } from "../../types";
 import { useAppDispatch } from "../../shared/utils";
-import { changePage } from "../../components/ui/redux-paginstion-slice/fetch-slice";
+import { changePage } from "../../store/redux-paginstion-slice/fetch-slice";
 
 function Home() {
   const dispatch = useAppDispatch();
@@ -20,7 +20,7 @@ function Home() {
       });
 
     return () => {
-      dispatch(changePage(0));
+      dispatch(changePage(1));
     };
   }, [breeds, dispatch]);
 

@@ -9,7 +9,7 @@ import SingleBreed from "./pages/SingleBreedPage/SingleBreed";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Provider } from "react-redux";
-import { store } from "./store";
+import { store } from "./store/store";
 
 const Layout = () => (
   <>
