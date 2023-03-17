@@ -8,6 +8,8 @@ import Products from "./pages/ProductsPage/Products";
 import SingleBreed from "./pages/SingleBreedPage/SingleBreed";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { Provider } from "react-redux";
+import { store } from "./store/store";
 
 const Layout = () => (
   <>
@@ -25,7 +27,7 @@ const router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: "/products",
+        path: `/products`,
         element: <Products />,
       },
       {
@@ -41,6 +43,8 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <Provider store={store}>
+      <RouterProvider router={router} />
+    </Provider>
   </React.StrictMode>
 );

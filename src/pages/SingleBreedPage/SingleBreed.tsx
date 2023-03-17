@@ -6,6 +6,7 @@ import { ImageType } from "../../types";
 import { Link } from "react-router-dom";
 import BreedData from "../../components/ui/singleBreed/BreedData";
 import Loader from "../../components/ui/loader/Loader";
+import { useAppSelector } from "../../shared/utils";
 
 export default function SingleBreed() {
   const { pathname } = useLocation();
@@ -48,7 +49,10 @@ export default function SingleBreed() {
   return (
     <div className="single-breed container-fluid ">
       <Link
-        to="/products"
+        to={{
+          pathname: "/products",
+          search: `?page=${useAppSelector((state) => state.page.page)}`,
+        }}
         className="single-breed__link offset-md-1 col-md-7 col-lg-4"
       >
         &lt;-Go to product list

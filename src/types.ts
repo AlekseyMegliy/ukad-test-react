@@ -42,3 +42,18 @@ export interface BreedDataProps {
   breedsSpecs: BreedsSpecs;
   image?: ImageType;
 }
+
+export interface UsePaginationProps {
+  numberOfCards: number;
+  listLength: number;
+}
+export interface UsePaginationReturn {
+  page: number;
+  totalPages: number;
+  firstContentIndex: number;
+  lastContentIndex: number;
+  nextPage: () => void;
+  prevPage: () => void;
+  setPage: (page: number) => void;
+}
+export type UsePagination = (arg: UsePaginationProps) => UsePaginationReturn;

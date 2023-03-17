@@ -2,7 +2,10 @@ import React from "react";
 import { Link, NavLink } from "react-router-dom";
 import "./header.scss";
 import logo from "../../assets/UKAD_logo.svg";
-import { highlightedLinkStyleIfActive } from "../../shared/utils";
+import {
+  highlightedLinkStyleIfActive,
+  useAppSelector,
+} from "../../shared/utils";
 
 export default function Header() {
   return (
@@ -21,7 +24,10 @@ export default function Header() {
         <NavLink
           className="header__nav-link"
           style={highlightedLinkStyleIfActive}
-          to="/products"
+          to={{
+            pathname: "/products",
+            search: `?page=${useAppSelector((state) => state.page.page)}`,
+          }}
         >
           Products
         </NavLink>
