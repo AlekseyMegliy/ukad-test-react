@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./productCard.scss";
 import { BreedType } from "../../../types";
+import noImage from "../../../assets/noimg.jpg";
 
 export default function ProductCard({
   weight,
@@ -22,7 +23,7 @@ export default function ProductCard({
         {image ? (
           <img className="product-сard__image" alt={name} src={image.url} />
         ) : (
-          <div className="product-сard__image">No image</div>
+          <img className="product-сard__image" alt={name} src={noImage} />
         )}
 
         <p className="product-сard__type">{life_span}</p>
