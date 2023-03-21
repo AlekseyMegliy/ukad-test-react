@@ -30,7 +30,6 @@ export default function Products() {
     });
 
   useEffect(() => {
-    console.log("Effect");
     history(
       searchTerm
         ? `/products?search=${searchTerm}`
@@ -74,7 +73,7 @@ export default function Products() {
   return (
     <div className="products container-fluid">
       <div className="products__header">
-        <h1 className="products__header-title">product page </h1>
+        <h1 className="products__header-title">product page</h1>
         <div className="products__header-search">
           <Icon icon="search" size={20} color="gray" />
           <input
@@ -118,7 +117,7 @@ export default function Products() {
         <Loader />
       )}
 
-      {totalPages ? (
+      {totalPages || !searchTerm ? (
         <ReactPaginate
           nextLabel={<img alt="slider__arrow" src={arrow} />}
           onPageChange={handlePageClick}

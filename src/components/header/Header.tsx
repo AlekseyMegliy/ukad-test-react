@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate, Link, NavLink } from "react-router-dom";
+import { useNavigate, Link, NavLink, useLocation } from "react-router-dom";
 import "./header.scss";
 import logo from "../../assets/UKAD_logo.svg";
 import {
@@ -11,6 +11,7 @@ import Icon from "../ui/icons/icon";
 export default function Header() {
   const history = useNavigate();
   const [searchValue, setSearchValue] = useState("");
+  const { pathname } = useLocation();
   function submit(event: any | undefined) {
     history(`/products?search=${event.target[0].value}`);
     event.preventDefault();
@@ -41,7 +42,10 @@ export default function Header() {
           Products
         </NavLink>
       </div>
-      <div className="header__search">
+      <div
+        className="header__search"
+        style={pathname === "/products" ? { display: "none" } : undefined}
+      >
         <Icon icon="search" size={20} color="white" />
         <form onSubmit={submit}>
           <input
