@@ -14,10 +14,10 @@ import { BreedType } from "../../types";
 export default function Products() {
   const _ = require("lodash");
   const [search] = useSearchParams();
-  const currentPage = 1 && Number(search.get("page"));
   const dispatch = useAppDispatch();
-  const [pageNum, setPageNum] = useState(currentPage);
-  const { data = [] } = useFetchBreedsQuery(pageNum - 1);
+  const [isLoading, setIsLoading] = useState(true);
+  const [pageNum, setPageNum] = useState(Number(search.get("page")));
+  const { data = [] } = useFetchBreedsQuery(pageNum && pageNum - 1);
   const [searchBreeds, setSearchBreeds] = useState<BreedType[]>([]);
   let breeds = data;
   const pageCount = 17;
@@ -39,30 +39,30 @@ export default function Products() {
 
     if (searchTerm) {
       const fetching = _.debounce(() => {
-        fetch("https://api.thedogapi.com/v1/breeds/search?q=dog")
+        fetch(`https://api.thedogapi.com/v1/breeds/search?q=${searchTerm}`)
           .then((res) => res.json())
-          .then((data) =>
-            setSearchBreeds(
-              data.filter((item: BreedType) =>
-                item.name.toLowerCase().includes(searchTerm.toLowerCase())
-              )
-            )
-          )
+          .then((data) => setSearchBreeds(data))
           .catch((error) => {
             console.error("Error fetching breed information:", error);
           });
-      }, 300);
+      }, 500);
       fetching();
       setPageNum(1);
+      setTimeout(() => setIsLoading(false), 5000);
     } else {
       setPage(0);
       setSearchBreeds([]);
     }
 
+    setIsLoading(true);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch, history, pageNum, searchTerm]);
 
-  const handlePageClick = (event: { selected: any }) => {
+  useEffect(() => {
+    search.get("search") || setSearchTerm("");
+  }, [search]);
+
+  const handlePageClick = (event: { selected: number }) => {
     window.scrollTo({
       top: 0,
       behavior: "smooth",
@@ -85,24 +85,26 @@ export default function Products() {
           />
         </div>
       </div>
-      {searchTerm ? (
-        searchBreeds.length ? (
-          <div className="row products-page">
-            {searchBreeds
-              .slice(firstContentIndex, lastContentIndex)
-              .map((dogy, index) => (
-                <div
-                  key={dogy.id}
-                  className="col-12 col-md-6 col-lg-3 products-page_card"
-                >
-                  {dogy && <Product {...dogy} />}
-                </div>
-              ))}
-          </div>
-        ) : (
-          <Loader />
-        )
-      ) : breeds.length ? (
+      {searchTerm && searchBreeds.length ? (
+        <div className="row products-page">
+          {searchBreeds
+            .slice(firstContentIndex, lastContentIndex)
+            .map((dogy, index) => (
+              <div
+                key={dogy.id}
+                className="col-12 col-md-6 col-lg-3 products-page_card"
+              >
+                {dogy && <Product {...dogy} />}
+              </div>
+            ))}
+        </div>
+      ) : (
+        (searchTerm && isLoading && <Loader />) ||
+        (searchTerm && (
+          <strong>Sorry, we didn't find anything ¯\_(ツ)_/¯</strong>
+        )) || <></>
+      )}
+      {!searchTerm && breeds.length ? (
         <div className="row products-page">
           {breeds.slice(0, 10).map((dogy, index) => (
             <div
@@ -114,9 +116,8 @@ export default function Products() {
           ))}
         </div>
       ) : (
-        <Loader />
+        (!searchTerm && <Loader />) || <></>
       )}
-
       {totalPages || !searchTerm ? (
         <ReactPaginate
           nextLabel={<img alt="slider__arrow" src={arrow} />}

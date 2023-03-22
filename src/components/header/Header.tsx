@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, FormEvent } from "react";
 import { useNavigate, Link, NavLink, useLocation } from "react-router-dom";
 import "./header.scss";
 import logo from "../../assets/UKAD_logo.svg";
@@ -12,8 +12,10 @@ export default function Header() {
   const history = useNavigate();
   const [searchValue, setSearchValue] = useState("");
   const { pathname } = useLocation();
-  function submit(event: any | undefined) {
-    history(`/products?search=${event.target[0].value}`);
+  function submit(event: FormEvent<HTMLFormElement>) {
+    const target = event.target as HTMLFormElement;
+    const searchValue = (target[0] as HTMLInputElement).value;
+    history(`/products?search=${searchValue}`);
     event.preventDefault();
     setSearchValue("");
   }
