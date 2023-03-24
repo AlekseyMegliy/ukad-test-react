@@ -85,7 +85,7 @@ export default function Products() {
           />
         </div>
       </div>
-      {searchTerm && searchBreeds.length ? (
+      {searchTerm && !!searchBreeds.length && (
         <div className="row products-page">
           {searchBreeds
             .slice(firstContentIndex, lastContentIndex)
@@ -98,12 +98,14 @@ export default function Products() {
               </div>
             ))}
         </div>
-      ) : (
-        (searchTerm && isLoading && <Loader />) ||
-        (searchTerm && (
-          <strong>Sorry, we didn't find anything ¯\_(ツ)_/¯</strong>
-        )) || <></>
       )}
+      {searchTerm &&
+        !searchBreeds.length &&
+        (isLoading ? (
+          <Loader />
+        ) : (
+          <strong>Sorry, we didn't find anything ¯\_(ツ)_/¯</strong>
+        ))}
       {!searchTerm && breeds.length ? (
         <div className="row products-page">
           {breeds.slice(0, 10).map((dogy, index) => (
@@ -116,7 +118,7 @@ export default function Products() {
           ))}
         </div>
       ) : (
-        (!searchTerm && <Loader />) || <></>
+        !searchTerm && <Loader />
       )}
       {totalPages || !searchTerm ? (
         <ReactPaginate
