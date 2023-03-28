@@ -3,6 +3,7 @@
   background-color: $dark-turquoise-color;
   padding: 25px 20px;
   display: flex;
+  flex-wrap: wrap;
   vertical-align: middle;
 
   &__logo {
@@ -13,6 +14,9 @@
     display: flex;
     flex-wrap: wrap;
 
+    @media all and (max-width: 400px) {
+      margin: 15px 0;
+    }
     &-link {
       margin: auto 30px;
       font-weight: normal;
@@ -24,6 +28,27 @@
       &:hover {
         color: #fff;
       }
+    }
+  }
+  &__search {
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    position: relative;
+    flex-grow: 1;
+    right: 10px;
+
+    @media all and (max-width: 676px) {
+      justify-content: left;
+      left: 30px;
+      margin: 10px 0;
+      flex-grow: 0;
+    }
+    &-input {
+      background-color: rgba(0, 0, 0, 0);
+      margin-left: 5px;
+      border: none;
+      color: #fff;
     }
   }
 }
