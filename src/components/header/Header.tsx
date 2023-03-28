@@ -44,21 +44,20 @@ export default function Header() {
           Products
         </NavLink>
       </div>
-      <div
-        className="header__search"
-        style={pathname === "/products" ? { display: "none" } : undefined}
-      >
-        <Icon icon="search" size={20} color="white" />
-        <form onSubmit={submit}>
-          <input
-            onChange={(e) => setSearchValue(e.target.value)}
-            className="header__search-input"
-            value={searchValue}
-            type="text"
-            placeholder="Search for products"
-          />
-        </form>
-      </div>
+      {pathname !== "/products" && (
+        <div className="header__search">
+          <Icon icon="search" size={20} color="white" />
+          <form onSubmit={submit}>
+            <input
+              onChange={(e) => setSearchValue(e.target.value)}
+              className="header__search-input"
+              value={searchValue}
+              type="text"
+              placeholder="Search for products"
+            />
+          </form>
+        </div>
+      )}
     </div>
   );
 }

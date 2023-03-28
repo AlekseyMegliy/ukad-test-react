@@ -1,5 +1,5 @@
 import "./products.scss";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import arrow from "../../assets/Mask.svg";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import ReactPaginate from "react-paginate";
@@ -10,9 +10,9 @@ import { useAppDispatch, usePagination } from "../../shared/utils";
 import { changePage } from "../../store/redux-paginstion-slice/fetch-slice";
 import Icon from "../../components/ui/icons/icon";
 import { BreedType } from "../../types";
+import debounce from "lodash.debounce";
 
 export default function Products() {
-  const _ = require("lodash");
   const [search] = useSearchParams();
   const dispatch = useAppDispatch();
   const [isLoading, setIsLoading] = useState(true);
@@ -29,6 +29,21 @@ export default function Products() {
       listLength: searchBreeds.length,
     });
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const fetchSearch = useCallback(
+    debounce((searchTerm: string) => {
+      setIsLoading(true);
+      fetch(`https://api.thedogapi.com/v1/breeds/search?q=${searchTerm}`)
+        .then((res) => res.json())
+        .then((data) => setSearchBreeds(data))
+        .catch((error) => {
+          console.error("Error fetching breed information:", error);
+        });
+      setTimeout(() => setIsLoading(false), 1000);
+    }, 1000),
+    []
+  );
+
   useEffect(() => {
     history(
       searchTerm
@@ -38,29 +53,16 @@ export default function Products() {
     dispatch(changePage(pageNum));
 
     if (searchTerm) {
-      const fetching = _.debounce(() => {
-        fetch(`https://api.thedogapi.com/v1/breeds/search?q=${searchTerm}`)
-          .then((res) => res.json())
-          .then((data) => setSearchBreeds(data))
-          .catch((error) => {
-            console.error("Error fetching breed information:", error);
-          });
-      }, 500);
-      fetching();
+      fetchSearch(searchTerm);
       setPageNum(1);
-      setTimeout(() => setIsLoading(false), 5000);
     } else {
       setPage(0);
       setSearchBreeds([]);
     }
-
     setIsLoading(true);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [dispatch, history, pageNum, searchTerm]);
 
-  useEffect(() => {
-    search.get("search") || setSearchTerm("");
-  }, [search]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [dispatch, history, pageNum, searchTerm, search]);
 
   const handlePageClick = (event: { selected: number }) => {
     window.scrollTo({
@@ -141,9 +143,7 @@ export default function Products() {
           breakLabel="..."
           forcePage={searchTerm ? page - 1 : pageNum - 1}
         />
-      ) : (
-        <></>
-      )}
+      ) : null}
     </div>
   );
 }

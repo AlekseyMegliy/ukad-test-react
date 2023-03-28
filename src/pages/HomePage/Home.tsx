@@ -18,11 +18,10 @@ function Home() {
       .catch((error) => {
         console.error("Error fetching breed information:", error);
       });
-
     return () => {
       dispatch(changePage(1));
     };
-  }, [breeds, dispatch]);
+  }, [dispatch]);
 
   return (
     <div className="home">
