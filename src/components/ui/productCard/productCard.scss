@@ -21,6 +21,12 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    &__square {
+      aspect-ratio: 4 / 4;
+    }
+    &__fit-contain {
+      object-fit: contain;
+    }
   }
 
   &__type {

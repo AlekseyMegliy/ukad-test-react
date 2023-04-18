@@ -1,5 +1,6 @@
 import React from "react";
 import "./breedData.scss";
+import classNames from "classnames";
 import { Length } from "../../../types";
 import { BreedDataProps } from "../../../types";
 import loading from "../../../assets/loading.gif";
@@ -33,33 +34,49 @@ function SpecsItem({ value, name }: { value: unknown; name: string }) {
 }
 
 export default function BreedData({
+  fontSize,
+  imgStyle,
   breed,
   breedsSpecs,
   image,
 }: BreedDataProps) {
   return (
-    <div className="breed-data row">
-      <h1 className="breed-data__title offset-md-1 ">{breed.name}</h1>
-      <div className="offset-md-1 col-md-5 col-lg-4">
-        <img
-          className="col-12"
-          src={image ? image.url : loading}
-          alt={breed.name}
-        />
-      </div>
-      <div className="breed-data__details offset-md-1 col-md-5">
-        {breedsSpecs.map(([key, value]) => (
-          <SpecsItem key={key} name={key} value={value} />
-        ))}
+    <div className="container-fluid">
+      <div className="breed-data row">
+        <h1 className="breed-data__title offset-md-1 ">{breed.name}</h1>
+        <div className="offset-md-1 col-md-5 col-lg-4 ">
+          <img
+            className={classNames(
+              "col-5",
+              { default: imgStyle === "default" },
+              { square: imgStyle === "square" },
+              { threefour: imgStyle === "3/4" }
+            )}
+            src={image ? image.url : loading}
+            alt={breed.name}
+          />
+        </div>
+        <div
+          className={classNames(
+            "breed-data__details offset-md-1 col-md-5 ",
+            { smFont: fontSize === "sm" },
+            { mdFont: fontSize === "md" },
+            { lgFont: fontSize === "lg" }
+          )}
+        >
+          {breedsSpecs.map(([key, value]) => (
+            <SpecsItem key={key} name={key} value={value} />
+          ))}
 
-        {breed?.description && (
-          <p className="breed-data__details__characteristic breed-data__details__description">
-            <strong className="breed-data__details__description_strong">
-              Description:
-            </strong>{" "}
-            {breed.description}
-          </p>
-        )}
+          {breed?.description && (
+            <p className="breed-data__details__characteristic_lg breed-data__details__description">
+              <strong className="breed-data__details__description_strong">
+                Description:
+              </strong>{" "}
+              {breed.description}
+            </p>
+          )}
+        </div>
       </div>
     </div>
   );

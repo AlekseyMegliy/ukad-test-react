@@ -1,10 +1,12 @@
 import React from "react";
+import classNames from "classnames";
 import { Link } from "react-router-dom";
 import "./productCard.scss";
 import { BreedType } from "../../../types";
 import noImage from "../../../assets/noimg.jpg";
 
 export default function ProductCard({
+  imgStyle,
   weight,
   height,
   id,
@@ -21,7 +23,19 @@ export default function ProductCard({
     <div className="product-сard">
       <Link to={{ pathname: `/products/${id}` }} className="product-сard__link">
         {image ? (
-          <img className="product-сard__image" alt={name} src={image.url} />
+          <img
+            className={classNames(
+              "product-сard__image",
+              {
+                "product-сard__image__square": imgStyle === "square",
+              },
+              {
+                "product-сard__image__fit-contain": imgStyle === "contain",
+              }
+            )}
+            alt={name}
+            src={image.url}
+          />
         ) : (
           <img className="product-сard__image" alt={name} src={noImage} />
         )}
