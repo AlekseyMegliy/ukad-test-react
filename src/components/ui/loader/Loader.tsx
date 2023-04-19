@@ -3,13 +3,13 @@ import "./loader.scss";
 import { BallTriangle } from "react-loader-spinner";
 
 export default function Loader({
-  size = 100,
-  radius = 5,
-  color = "#022b32",
+  size,
+  radius,
+  color,
 }: {
-  size?: number;
+  size?: 50 | 100 | 150;
   radius?: number;
-  color?: string;
+  color?: "#022b32" | "black" | "blue";
 }) {
   return (
     <div className="loader">

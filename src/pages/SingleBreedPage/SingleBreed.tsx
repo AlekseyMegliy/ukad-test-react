@@ -9,36 +9,13 @@ import Loader from "../../components/ui/loader/Loader";
 import { useAppSelector } from "../../shared/utils";
 
 export default function SingleBreed({
-  fontSize = "md",
-  imgStyle = "default",
-  item = {
-    weight: { imperial: "6 - 13", metric: "3 - 6" },
-    height: { imperial: "9 - 11.5", metric: "23 - 29" },
-    id: 1,
-    name: "Affenpinscher",
-    bred_for: "Small rodent hunting, lapdog",
-    breed_group: "Toy",
-    life_span: "10 - 12 years",
-    temperament: "Stubborn, Curious, Playful, Adventurous, Active, Fun-loving",
-    origin: "Germany, France",
-    reference_image_id: "BJa4kxc4X",
-  },
-
-  breedSpecs = [
-    ["weight", { imperial: "6 - 13", metric: "3 - 6" }],
-    ["height", { imperial: "9 - 11.5", metric: "23 - 29" }],
-    ["bred_for", "Small rodent hunting, lapdog"],
-    ["breed_group", "Toy"],
-    ["life_span", "10 - 12 years"],
-    [
-      "temperament",
-      "Stubborn, Curious, Playful, Adventurous, Active, Fun-loving",
-    ],
-    ["origin", "Germany, France"],
-  ],
+  fontSize,
+  imgStyle,
+  item,
+  breedSpecs,
 }: {
-  fontSize?: string;
-  imgStyle?: string;
+  fontSize?: "sm" | "md" | "lg";
+  imgStyle?: "default" | "square" | "3/4";
   item?: any;
   breedSpecs?: any;
 }) {
@@ -78,7 +55,6 @@ export default function SingleBreed({
       )
     );
   }, [breed]);
-  console.log(breedsSpecs);
   return (
     <div className="single-breed container-fluid ">
       <Link
@@ -93,7 +69,7 @@ export default function SingleBreed({
       {breed && breedsSpecs ? (
         <BreedData
           breed={breed}
-          breedsSpecs={breedsSpecs && breedSpecs}
+          breedsSpecs={breedSpecs}
           image={image}
           imgStyle={imgStyle}
           fontSize={fontSize}

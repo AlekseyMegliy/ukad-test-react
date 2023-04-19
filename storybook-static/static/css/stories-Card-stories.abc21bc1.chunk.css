@@ -1,5 +1,0 @@
-@import url(https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap);
-@import url(https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap);
-.product-сard{margin:10px 0;padding:0;padding-bottom:10px;border:3px solid #f2f2f2}.product-сard:hover{transition:all .2s ease-in;-webkit-transform:scale(1.005, 1.005);transform:scale(1.005, 1.005);-webkit-filter:contrast(1.15);filter:contrast(1.15);border:3px solid #c9c9c9}.product-сard__image{aspect-ratio:3.5/4;width:100%;position:relative;object-fit:cover;display:flex;justify-content:center;align-items:center}.product-сard__image__square{aspect-ratio:4/4}.product-сard__image__fit-contain{object-fit:contain}.product-сard__type{margin:10px 0 8px 28px;font-weight:600;font-size:13px;letter-spacing:-0.03em;text-transform:uppercase;color:#232323;line-height:20px}.product-сard__name{margin:0 0 8px 28px;color:#232323;line-height:28px}.product-сard__link{text-decoration:none}
-
-/*# sourceMappingURL=stories-Card-stories.abc21bc1.chunk.css.map*/
