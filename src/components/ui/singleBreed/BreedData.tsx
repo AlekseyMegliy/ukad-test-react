@@ -47,7 +47,6 @@ export default function BreedData({
         <div className="offset-md-1 col-md-5 col-lg-4 ">
           <img
             className={classNames(
-              "col-5",
               { default: imgStyle === "default" },
               { square: imgStyle === "square" },
               { threefour: imgStyle === "3/4" }

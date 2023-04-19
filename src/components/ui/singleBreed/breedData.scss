@@ -33,17 +33,17 @@
 }
 .default {
   object-fit: cover;
-  width: 90%;
+  width: 100%;
 }
 .square {
   object-fit: cover;
   aspect-ratio: 4/4;
-  width: 90%;
+  width: 100%;
 }
 .threefour {
   object-fit: cover;
   aspect-ratio: 3/4;
-  width: 90%;
+  width: 100%;
 }
 .smFont {
   font-size: 12px;
