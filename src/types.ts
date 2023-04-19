@@ -13,6 +13,7 @@ export type ImageType = {
   height: number;
 };
 export type BreedType = {
+  imgStyle?: "default" | "square" | "contain";
   weight: Length;
   height: Length;
   id: number;
@@ -38,6 +39,8 @@ export interface SliderComponentProps {
 type BreedsSpecs = [string, string | number | Length | ImageType][];
 
 export interface BreedDataProps {
+  fontSize?: "sm" | "md" | "lg";
+  imgStyle?: "default" | "square" | "3/4";
   breed: BreedType;
   breedsSpecs: BreedsSpecs;
   image?: ImageType;

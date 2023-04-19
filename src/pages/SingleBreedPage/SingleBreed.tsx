@@ -8,10 +8,20 @@ import BreedData from "../../components/ui/singleBreed/BreedData";
 import Loader from "../../components/ui/loader/Loader";
 import { useAppSelector } from "../../shared/utils";
 
-export default function SingleBreed() {
+export default function SingleBreed({
+  fontSize,
+  imgStyle,
+  item,
+  breedSpecs,
+}: {
+  fontSize?: "sm" | "md" | "lg";
+  imgStyle?: "default" | "square" | "3/4";
+  item?: any;
+  breedSpecs?: any;
+}) {
   const { pathname } = useLocation();
   const id = pathname.split("/")[2];
-  const [breed, setBreed] = useState<BreedType>();
+  const [breed, setBreed] = useState<BreedType>(item);
   const [image, setImage] = useState<ImageType>();
 
   useEffect(() => {
@@ -45,7 +55,6 @@ export default function SingleBreed() {
       )
     );
   }, [breed]);
-
   return (
     <div className="single-breed container-fluid ">
       <Link
@@ -58,7 +67,13 @@ export default function SingleBreed() {
         &lt;-Go to product list
       </Link>
       {breed && breedsSpecs ? (
-        <BreedData breed={breed} breedsSpecs={breedsSpecs} image={image} />
+        <BreedData
+          breed={breed}
+          breedsSpecs={breedSpecs}
+          image={image}
+          imgStyle={imgStyle}
+          fontSize={fontSize}
+        />
       ) : (
         <Loader />
       )}
