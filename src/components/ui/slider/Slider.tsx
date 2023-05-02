@@ -67,7 +67,13 @@ export default function SliderComponent(props: SliderComponentProps) {
         onClick={left}
         style={Math.round(shift) === 0 ? { display: "none" } : undefined}
       >
-        <img alt="slider__arrow" className="slider__arrow" src={arrow} />
+        <img
+          alt="slider__arrow"
+          className="slider__arrow"
+          src={arrow}
+          width="12"
+          height="68"
+        />
       </span>
 
       <div className="slider__products-row row">
@@ -89,7 +95,13 @@ export default function SliderComponent(props: SliderComponentProps) {
         onClick={right}
         style={rightEdge ? { display: "none" } : undefined}
       >
-        <img alt="slider__arrow" className="slider__arrow" src={arrow} />
+        <img
+          alt="slider__arrow"
+          className="slider__arrow"
+          src={arrow}
+          width="12"
+          height="68"
+        />
       </span>
     </div>
   );

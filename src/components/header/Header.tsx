@@ -23,7 +23,13 @@ export default function Header() {
   return (
     <div className="header container-fluid">
       <Link to="/">
-        <img className="header__logo" alt="logo" src={logo} />
+        <img
+          className="header__logo"
+          alt="logo"
+          src={logo}
+          width="110"
+          height="28"
+        />
       </Link>
       <div className="header__nav">
         <NavLink
