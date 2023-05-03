@@ -1,4 +1,5 @@
 import React from "react";
+import LazyLoad from "react-lazy-load";
 import { Link } from "react-router-dom";
 import "./productCard.scss";
 import { BreedType } from "../../../types";
@@ -21,7 +22,9 @@ export default function ProductCard({
     <div className="product-сard">
       <Link to={{ pathname: `/products/${id}` }} className="product-сard__link">
         {image ? (
-          <img className="product-сard__image" alt={name} src={image.url} />
+          <LazyLoad>
+            <img className="product-сard__image" alt={name} src={image.url} />
+          </LazyLoad>
         ) : (
           <img className="product-сard__image" alt={name} src={noImage} />
         )}
